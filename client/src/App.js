@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Dashboard from "./components/pages/Dashboard";
+import Survey from "./components/pages/Survey";
 import React, { Component } from 'react';
 import Login from "./components/auth/Login";
 import NotFound from "./components/layout/NotFound";
@@ -19,7 +20,7 @@ import '../node_modules/jquery/dist/jquery.min';
 import '../node_modules/popper.js/dist/popper';
 
 import User from "./components/pages/Users";
-
+import Surveys from "./components/pages/Surveys";
 if (localStorage.jwtToken) {
     const token = localStorage.jwtToken;
     setAuthToken(token);
@@ -44,7 +45,9 @@ class App extends Component {
                             <Route exact path="/login" component={Login} />
                             <Switch>
                                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
+                                <PrivateRoute exact path="/survey" component={Survey} />
                                 <PrivateRoute exact path="/users" component={User} />
+                                <PrivateRoute exact path="/surveys" component={Surveys} />
                             </Switch>
                             <Route exact path="*" component={NotFound} />
                         </Switch>
